@@ -1,18 +1,3 @@
-AWSTemplateFormatVersion: '2010-09-09'
-Description: EC2 básica en Ohio (us-east-2)
-
-Parameters:
-  KeyName:
-    Description: Nombre del KeyPair para SSH
-    Type: AWS::EC2::KeyPair::KeyName
-
-Resources:
-  MyEC2Instance:
-    Type: AWS::EC2::Instance
-    Properties:
-      InstanceType: t3.micro
-      KeyName: !Ref KeyName
-      ImageId: ami-07062e2a343acc423
-      Tags:
-        - Key: Name
-          Value: MiEC2Basica
+template-file-path: deployment-config.yml
+parameters: {}
+tags: {}
