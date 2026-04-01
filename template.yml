@@ -11,7 +11,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: t3.micro
-      KeyName: !Ref KeyName
+      KeyName: andresc-ohio
       ImageId: ami-07062e2a343acc423
       Tags:
         - Key: Name
