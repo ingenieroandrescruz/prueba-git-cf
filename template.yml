@@ -1,10 +1,10 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: EC2 básica en Ohio (us-east-2)
 
-Parameters:
-  KeyName:
-    Description: Nombre del KeyPair para SSH
-    Type: AWS::EC2::KeyPair::KeyName
+# Parameters:
+#   KeyName:
+#     Description: Nombre del KeyPair para SSH
+#     Type: AWS::EC2::KeyPair::KeyName
 
 Resources:
   MyEC2Instance:
