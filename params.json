@@ -5,7 +5,7 @@
   },
   {
     "ParameterKey": "InstanceType",
-    "ParameterValue": "t3.micro"
+    "ParameterValue": "t4g.micro"
   },
   {
     "ParameterKey": "ImageId",
