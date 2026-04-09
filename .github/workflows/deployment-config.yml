@@ -23,4 +23,5 @@ jobs:
           aws cloudformation deploy \
             --template-file template.yml \
             --stack-name prueba-cf-github \
+            --parameter-overrides file://params.json \
             --capabilities CAPABILITY_NAMED_IAM
