@@ -1,0 +1,8 @@
+# Copia a backend.hcl (no subas secretos si usas nombres sensibles) o pasa estos valores en CI.
+# Tras `terraform apply` en bootstrap/, usa los outputs state_bucket_name y dynamodb_lock_table_name.
+
+bucket         = "REEMPLAZA_CON_OUTPUT_state_bucket_name"
+key            = "prueba-git-cf/terraform.tfstate"
+region         = "us-east-2"
+encrypt        = true
+dynamodb_table = "REEMPLAZA_CON_OUTPUT_dynamodb_lock_table_name"
