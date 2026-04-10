@@ -18,10 +18,25 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
 
-      - name: Deploy CloudFormation stack
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.0"
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+
+      - name: Terraform Init
         run: |
-          aws cloudformation deploy \
-            --template-file template.yml \
-            --stack-name prueba-cf-github \
-            --parameter-overrides file://params.json \
-            --capabilities CAPABILITY_NAMED_IAM
+          terraform init -input=false \
+            -backend-config="bucket=${{ secrets.TF_STATE_BUCKET }}" \
+            -backend-config="key=prueba-git-cf/terraform.tfstate" \
+            -backend-config="region=us-east-2" \
+            -backend-config="encrypt=true" \
+            -backend-config="dynamodb_table=${{ secrets.TF_LOCK_TABLE }}"
+
+      - name: Terraform Validate
+        run: terraform validate -no-color
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -input=false -no-color
